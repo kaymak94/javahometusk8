@@ -1,7 +1,9 @@
 package ru.netology.domain;
 
-public class Radio {
+import lombok.Data;
 
+@Data
+public class Radio {
     private int currentStationNumber;
     private int currentSoundVolume;
 
@@ -31,9 +33,9 @@ public class Radio {
     }
 
 
-    public int getCurrentStationNumber() {
-        return currentStationNumber;
-    }
+    //  public int getCurrentStationNumber() {
+    //    return currentStationNumber;
+    // }
 
     public int nextStation() {
 
@@ -55,15 +57,15 @@ public class Radio {
         return currentStationNumber;
     }
 
-    public void setCurrentSoundVolume(int currentSoundVolume) {
+    //  public void setCurrentSoundVolume(int currentSoundVolume) {
 
-        this.currentSoundVolume = currentSoundVolume;
-    }
+    //   this.currentSoundVolume = currentSoundVolume;
+    // }
 
 
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
-    }
+    //   public int getCurrentSoundVolume() {
+    //     return currentSoundVolume;
+    // }
 
 
     public int increaseVolume() {
