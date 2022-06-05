@@ -1,13 +1,29 @@
 package ru.netology.domain;
 
-public class Radio {
+import lombok.Data;
 
+@Data
+public class Radio {
     private int currentStationNumber;
     private int currentSoundVolume;
 
+    private int amountStationNumber = 10;
+
+    private int maxSoundVolume = 100;
+
+    private int minSoundVolume = 0;
+
+    public Radio(int amountStationNumber) {
+        this.amountStationNumber = amountStationNumber - 1;
+    }
+
+    public Radio() {
+
+    }
+
     public void setCurrentStationNumber(int currentStationNumber) {
 
-        if (currentStationNumber > 9) {
+        if (currentStationNumber > amountStationNumber) {
             return;
         }
         if (currentStationNumber < 0) {
@@ -17,13 +33,13 @@ public class Radio {
     }
 
 
-    public int getCurrentStationNumber() {
-        return currentStationNumber;
-    }
+    //  public int getCurrentStationNumber() {
+    //    return currentStationNumber;
+    // }
 
     public int nextStation() {
 
-        if (currentStationNumber > 8) {
+        if (currentStationNumber >= amountStationNumber) {
             currentStationNumber = 0;
         } else {
             currentStationNumber = currentStationNumber + 1;
@@ -35,25 +51,25 @@ public class Radio {
     public int prevStation() {
         currentStationNumber = currentStationNumber - 1;
         if (currentStationNumber < 0) {
-            currentStationNumber = 9;
+            currentStationNumber = amountStationNumber;
 
         }
         return currentStationNumber;
     }
 
-    public void setCurrentSoundVolume(int currentSoundVolume) {
+    //  public void setCurrentSoundVolume(int currentSoundVolume) {
 
-        this.currentSoundVolume = currentSoundVolume;
-    }
+    //   this.currentSoundVolume = currentSoundVolume;
+    // }
 
 
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
-    }
+    //   public int getCurrentSoundVolume() {
+    //     return currentSoundVolume;
+    // }
 
 
     public int increaseVolume() {
-        if (currentSoundVolume < 10) {
+        if (currentSoundVolume < maxSoundVolume) {
             currentSoundVolume = currentSoundVolume + 1;
 
         }
@@ -61,7 +77,7 @@ public class Radio {
     }
 
     public int decreaseVolume() {
-        if (currentSoundVolume > 0) {
+        if (currentSoundVolume > minSoundVolume) {
             currentSoundVolume = currentSoundVolume - 1;
         }
         return currentSoundVolume;
